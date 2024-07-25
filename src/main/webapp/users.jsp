@@ -1,16 +1,15 @@
-<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<%@ page import="java.util.Date" %>
-<%@ page import="java.util.Random" %>
-<%@ page import="uz.app.testapp.entity.User" %>
-<%@ page import="java.util.List" %>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html lang="en">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: user
+  Date: 7/25/24
+  Time: 6:00 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+    <title>Title</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -81,33 +80,25 @@
             background-color: #f9f9f9;
         }
     </style>
-
 </head>
 <body>
-
-
-
-<form action="/sign-up" method="post">
-    <div>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-    </div>
-    <div>
-        <label >Email:</label>
-        <input type="email" name="email" required>
-    </div>
-    <div>
-        <label >Password:</label>
-        <input type="password" name="password" required>
-    </div>
-    <button type="submit">Sign Up</button>
-</form>
-
-
-
-<div>
-
-</div>
-
+<table>
+    <tr>
+        <td>id</td>
+        <td>name</td>
+        <td>email</td>
+        <td>password</td>
+    </tr>
+<%--    <c:out value="${users}"></c:out>--%>
+    <h1>all users</h1>
+<%--    <c:forEach items="${users}" var="user">--%>
+        <tr>
+            <td> ${user.getId()}</td>
+            <td> ${user.getName()}</td>
+            <td> ${user.getEmail()}</td>
+            <td> ${user.getPassword()}</td>
+        </tr>
+<%--    </c:forEach>--%>
+</table>
 </body>
 </html>

@@ -1,16 +1,14 @@
-<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<%@ page import="java.util.Date" %>
-<%@ page import="java.util.Random" %>
-<%@ page import="uz.app.testapp.entity.User" %>
-<%@ page import="java.util.List" %>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html lang="en">
+<%--
+  Created by IntelliJ IDEA.
+  User: user
+  Date: 7/25/24
+  Time: 5:59 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+    <title>Title</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -81,33 +79,23 @@
             background-color: #f9f9f9;
         }
     </style>
-
 </head>
 <body>
-
-
-
-<form action="/sign-up" method="post">
+<% if ((Boolean) request.getAttribute("exists")) {%>
+<h1><%= request.getAttribute("xabar")%></h1>
+<a href="/sign-in"><button> sign in</button></a>
+<%} else {%>
+<form action="/sign-in" method="post">
     <div>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" value="<%= request.getParameter("email") %>" id="email" name="email" required>
     </div>
     <div>
-        <label >Email:</label>
-        <input type="email" name="email" required>
-    </div>
-    <div>
-        <label >Password:</label>
-        <input type="password" name="password" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
     </div>
     <button type="submit">Sign Up</button>
 </form>
-
-
-
-<div>
-
-</div>
-
+<%}%>
 </body>
 </html>
