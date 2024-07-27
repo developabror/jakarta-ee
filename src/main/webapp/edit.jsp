@@ -1,9 +1,8 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: user
-  Date: 7/25/24
-  Time: 6:00 PM
+  Date: 7/27/24
+  Time: 3:18 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -82,56 +81,21 @@
     </style>
 </head>
 <body>
-<c:set var="t" value="hello admin"/>
-<c:if test="${user.getEmail() eq 'admin@gmail.com'}" />
-<c:out value="${t}" />
-<table>
-    <tr>
-        <td>id</td>
-        <td>name</td>
-        <td>email</td>
-        <td>password</td>
-    </tr>
-    <%--    <c:out value="${users}"></c:out>--%>
-    <h1>all users</h1>
-    <% %>
-    <c:choose>
-        <c:when test="${user.getEmail() eq 'admin@gmail.com'}">
-
-            <c:forEach items="${users}" var="u">
-                <td> ${u.getId()}</td>
-                <td> ${u.getName()}</td>
-                <td> ${u.getEmail()}</td>
-                <td> ${u.getPassword()}</td>
-                <td>
-                    <form action='/edit'>
-                        <button value="${u.getId()}" name="id" type="submit">edit</button>
-                    </form>
-                </td>
-                </tr>
-            </c:forEach>
-        </c:when>
-
-        <%--    <c:forEach items="${users}" var="user">--%>
-        <c:otherwise>
-            <div>
-                <tr>
-                    <td> ${user.getId()}</td>
-                    <td> ${user.getName()}</td>
-                    <td> ${user.getEmail()}</td>
-                    <td> ${user.getPassword()}</td>
-                    <td>
-                        <form action='/edit'>
-                            <button value="${user.getId()}" name="id" type="submit">edit</button>
-                        </form>
-                    </td>
-                </tr>
-            </div>
-        </c:otherwise>
-    </c:choose>
-    <%--    </c:forEach>--%>
-</table>
-
-
+<form action="/edit" method="post">
+    <input type="hidden" value="${user.getId()}" id="id" name="id">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" value="${user.getName()}" id="name" name="name" required>
+    </div>
+    <div>
+        <label >Email:</label>
+        <input type="email" value="${user.getEmail()}" name="email" required>
+    </div>
+    <div>
+        <label >Password:</label>
+        <input type="password" value="${user.getPassword()}" name="password" required>
+    </div>
+    <button type="submit">Edit</button>
+</form>
 </body>
 </html>

@@ -1,4 +1,4 @@
-package uz.app.testapp;
+package uz.app.testapp.controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,12 +10,14 @@ import uz.app.testapp.entity.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 @WebServlet("/sign-up")
 public class SignUpController extends HttpServlet {
-    public static List<User> users = new ArrayList<>();
+    public static List<User> users = new ArrayList<>(Arrays.asList(
+            new User("admin","admin@gmail.com","admin")
+    ));
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
