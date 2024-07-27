@@ -1,9 +1,5 @@
 <%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<%@ page import="java.util.Date" %>
-<%@ page import="java.util.Random" %>
-<%@ page import="uz.app.testapp.entity.User" %>
-<%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,30 +80,7 @@
 
 </head>
 <body>
-
-
-
-<form action="/sign-up" method="post">
-    <div>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-    </div>
-    <div>
-        <label >Email:</label>
-        <input type="email" name="email" required>
-    </div>
-    <div>
-        <label >Password:</label>
-        <input type="password" name="password" required>
-    </div>
-    <button type="submit">Sign Up</button>
-</form>
-
-
-
-<div>
-
-</div>
+<a href="/upload"> upload files here</a>
 
 </body>
 </html>

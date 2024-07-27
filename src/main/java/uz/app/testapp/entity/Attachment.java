@@ -9,9 +9,9 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Attachment {
     private final String id = UUID.randomUUID().toString();
-    private String name;
-    private String email;
-    private String password;
+    private String attachmentName;
+    private String prefix;
+    private String attachmentSize;
 }

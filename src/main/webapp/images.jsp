@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: user
-  Date: 7/25/24
-  Time: 5:59 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -81,21 +75,43 @@
     </style>
 </head>
 <body>
-<% if ((Boolean) request.getAttribute("exists")) {%>
-<h1><%= request.getAttribute("xabar")%></h1>
-<a href="/sign-in"><button> sign in</button></a>
-<%} else {%>
-<form action="/sign-in" method="post">
-    <div>
-        <label for="email">Email:</label>
-        <input type="email" value="<%= request.getParameter("email") %>" id="email" name="email" required>
-    </div>
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-    </div>
-    <button type="submit">Sign Up</button>
-</form>
-<%}%>
+<table>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>image</th>
+        <th>size</th>
+    </tr>
+
+    <c:forEach items="${attachments}" var="temp">
+        <tr>
+
+            <th>${temp.getId()}</th>
+            <th>${temp.getAttachmentName()}</th>
+            <c:choose>
+                <c:when test="${temp.getPrefix() == '.mp4'}">
+                    <th>
+                    <video controls src="/download?id=${temp.getId()}">
+
+                    </video>
+                    </th>
+                </c:when>
+                <c:when test="${temp.getPrefix() == '.mp3'}">
+                    <th>
+                    <audio controls>
+                        <source src="/download?id=${temp.getId()}" type="audio/mp3">
+                    </audio>
+                    </th>
+                </c:when>
+                <c:otherwise>
+                    <th><img width="200px" height="200px" src="/download?id=${temp.getId()}"></th>
+                </c:otherwise>
+            </c:choose>
+            <th>${temp.getAttachmentSize()}</th>
+            <th><form action="/download"><input type="hidden"  id="id" name="id" value="${temp.getId()}">  <button type="submit"> download </button> </form></th>
+        </tr>
+    </c:forEach>
+</table>
+<a href="/upload">return to upload file</a>
 </body>
 </html>

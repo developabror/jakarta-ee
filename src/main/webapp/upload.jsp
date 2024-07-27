@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: user
   Date: 7/27/24
-  Time: 3:18 PM
+  Time: 4:44 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -81,21 +81,12 @@
     </style>
 </head>
 <body>
-<form action="/edit" method="post">
-    <input type="hidden" value="${user.getId()}" id="id" name="id">
+<form enctype="multipart/form-data" action="/upload" method="post">
     <div>
-        <label for="name">Name:</label>
-        <input type="text" value="${user.getName()}" id="name" name="name" required>
+        <label for="file">Name:</label>
+        <input type="file" id="file" name="file" required>
     </div>
-    <div>
-        <label >Email:</label>
-        <input type="email" value="${user.getEmail()}" name="email" required>
-    </div>
-    <div>
-        <label >Password:</label>
-        <input type="password" value="${user.getPassword()}" name="password" required>
-    </div>
-    <button type="submit">Edit</button>
+    <button type="submit">Sign Up</button>
 </form>
 </body>
 </html>
